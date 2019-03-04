@@ -1,0 +1,11 @@
+/Users/russellreiter/Workspace/studentExercises/obj/Debug/netcoreapp2.2/studentExercises.csprojAssemblyReference.cache
+/Users/russellreiter/Workspace/studentExercises/obj/Debug/netcoreapp2.2/studentExercises.csproj.CoreCompileInputs.cache
+/Users/russellreiter/Workspace/studentExercises/obj/Debug/netcoreapp2.2/studentExercises.AssemblyInfoInputs.cache
+/Users/russellreiter/Workspace/studentExercises/obj/Debug/netcoreapp2.2/studentExercises.AssemblyInfo.cs
+/Users/russellreiter/Workspace/studentExercises/bin/Debug/netcoreapp2.2/studentExercises.deps.json
+/Users/russellreiter/Workspace/studentExercises/bin/Debug/netcoreapp2.2/studentExercises.runtimeconfig.json
+/Users/russellreiter/Workspace/studentExercises/bin/Debug/netcoreapp2.2/studentExercises.runtimeconfig.dev.json
+/Users/russellreiter/Workspace/studentExercises/bin/Debug/netcoreapp2.2/studentExercises.dll
+/Users/russellreiter/Workspace/studentExercises/bin/Debug/netcoreapp2.2/studentExercises.pdb
+/Users/russellreiter/Workspace/studentExercises/obj/Debug/netcoreapp2.2/studentExercises.dll
+/Users/russellreiter/Workspace/studentExercises/obj/Debug/netcoreapp2.2/studentExercises.pdb
