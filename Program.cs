@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace studentExercises {
 
@@ -17,9 +18,9 @@ namespace studentExercises {
       Cohort cohort3 = new Cohort(3, "Cohort 3");
 
       Exercise exercise1 = new Exercise (1, "Planets", "CSharp");
-      Exercise exercise2 = new Exercise (2, "Random Numbers", "CSharp");
+      Exercise exercise2 = new Exercise (2, "Random Numbers", "JavaScript");
       Exercise exercise3 = new Exercise (3, "Classes", "CSharp");
-      Exercise exercise4 = new Exercise (4, "Dictionaries", "CSharp");
+      Exercise exercise4 = new Exercise (4, "Dictionaries", "JavaScript");
       Exercise exercise5 = new Exercise (5, "Sets", "CSharp");
       Exercise exercise6 = new Exercise (6, "Student Exercises", "CSharp");
 
@@ -53,8 +54,6 @@ namespace studentExercises {
       instructor1.AssignExercises(student4, exercise2);
       instructor1.AssignExercises(student5, exercise1);
       instructor1.AssignExercises(student5, exercise2);
-      instructor1.AssignExercises(student6, exercise1);
-      instructor1.AssignExercises(student6, exercise2);
 
       instructor2.AssignExercises(student1, exercise3);
       instructor2.AssignExercises(student1, exercise4);
@@ -66,24 +65,14 @@ namespace studentExercises {
       instructor2.AssignExercises(student4, exercise4);
       instructor2.AssignExercises(student5, exercise3);
       instructor2.AssignExercises(student5, exercise4);
-      instructor2.AssignExercises(student6, exercise3);
-      instructor2.AssignExercises(student6, exercise4);
 
-      instructor3.AssignExercises(student1, exercise5);
-      instructor3.AssignExercises(student1, exercise6);
-      instructor3.AssignExercises(student2, exercise5);
-      instructor3.AssignExercises(student2, exercise6);
-      instructor3.AssignExercises(student3, exercise5);
-      instructor3.AssignExercises(student3, exercise6);
-      instructor3.AssignExercises(student4, exercise5);
-      instructor3.AssignExercises(student4, exercise6);
       instructor3.AssignExercises(student5, exercise5);
       instructor3.AssignExercises(student5, exercise6);
-      instructor3.AssignExercises(student6, exercise5);
-      instructor3.AssignExercises(student6, exercise6);
 
       List<Student> students = new List<Student>() {student1, student2, student3, student4, student5, student6};
       List<Exercise> exercises = new List<Exercise> () {exercise1, exercise2, exercise3, exercise4, exercise5, exercise6};
+      List<Cohort> cohorts = new List<Cohort> () {cohort1, cohort2, cohort3};
+      List<Instructor> instructors = new List<Instructor> () {instructor1, instructor2, instructor3};
 
       foreach (Student student in students) {
 
@@ -94,6 +83,60 @@ namespace studentExercises {
         }
         string exerciseList = String.Join(", ", assignedExercises);
         Console.WriteLine($"{student.FirstName} {student.LastName} is working on the following exercises: {exerciseList}");
+      }
+
+      IEnumerable<Exercise> javascriptExercises = exercises.Where(exercise => exercise.ExerciseLanguage == "JavaScript");
+      Console.WriteLine("--------------------------------------------");
+      Console.WriteLine("The exercises with JavaScript language are: ");
+      foreach (Exercise ex in javascriptExercises) {
+          Console.WriteLine($"{ex.ExerciseName} : {ex.ExerciseLanguage}");
+      }
+      Console.WriteLine("--------------------------------------------");
+
+      IEnumerable<Student> studentsInCohort1 = students.Where(student => student.CohortId == 1);
+      Console.WriteLine("The students in Cohort 1 are: ");
+      foreach (Student student in studentsInCohort1) {
+          Console.WriteLine($"{student.FirstName} {student.LastName}");
+      }
+      Console.WriteLine("--------------------------------------------");
+
+      IEnumerable<Instructor> instructorsInCohort1 = instructors.Where(instructor => instructor.CohortId == 1);
+      Console.WriteLine("The instructors in Cohort 1 are: ");
+      foreach (Instructor instructor in instructorsInCohort1) {
+          Console.WriteLine($"{instructor.FirstName} {instructor.LastName}");
+      }
+      Console.WriteLine("--------------------------------------------");
+
+      IEnumerable<Student> orderedStudents = students.OrderBy(student => student.LastName);
+      Console.WriteLine("The students in alphabetical order by last name are: ");
+      foreach (Student student in orderedStudents) {
+          Console.WriteLine($"{student.FirstName} {student.LastName}");
+      }
+      Console.WriteLine("--------------------------------------------");
+
+      IEnumerable<Student> studentsWithoutExercises = students.Where(student => student.AssignedExercises.Count() == 0);
+      Console.WriteLine("The students with no exercises are: ");
+      foreach (Student student in studentsWithoutExercises) {
+          Console.WriteLine($"{student.FirstName} {student.LastName}");
+      }
+      Console.WriteLine("--------------------------------------------");
+
+      var studentWithMaxExercises = (from student in students
+        let count = student.AssignedExercises.Count()
+        orderby count descending
+        select student).First();
+
+      Console.WriteLine($"The student working on the most exercises is: {studentWithMaxExercises.FirstName} {studentWithMaxExercises.LastName}.  He is working on {studentWithMaxExercises.AssignedExercises.Count()} exercises");
+      Console.WriteLine("--------------------------------------------");
+
+      var studentsByCohort = from cohort in cohorts
+        select new {
+          CohortName = cohort.CohortName,
+          StudentsInCohort = students.Count(student => student.CohortId == cohort.CohortId)
+        };
+
+      foreach (var cohort in studentsByCohort) {
+          Console.WriteLine($"{cohort.CohortName} has {cohort.StudentsInCohort} students.");
       }
     }
   }
