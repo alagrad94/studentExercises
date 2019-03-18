@@ -1,46 +1,46 @@
 -- Create Tables
 
-CREATE TABLE Cohort (
-	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
-	CohortName VARCHAR(55) NOT NULL
-);
+--CREATE TABLE Cohort (
+--	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
+--	CohortName VARCHAR(55) NOT NULL
+--);
 
-CREATE TABLE Student (
-	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
-	FirstName VARCHAR(55) NOT NULL,
-	LastName VARCHAR(55) NOT NULL,
-	SlackHandle VARCHAR(55) NOT NULL,
-	CohortId INTEGER NOT NULL,
-	CONSTRAINT FK_Student_Cohort FOREIGN KEY(CohortId) REFERENCES Cohort(Id)
-);
+--CREATE TABLE Student (
+--	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
+--	FirstName VARCHAR(55) NOT NULL,
+--	LastName VARCHAR(55) NOT NULL,
+--	SlackHandle VARCHAR(55) NOT NULL,
+--	CohortId INTEGER NOT NULL,
+--	CONSTRAINT FK_Student_Cohort FOREIGN KEY(CohortId) REFERENCES Cohort(Id)
+--);
 
-CREATE TABLE Instructor (
-	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
-	FirstName VARCHAR(55) NOT NULL,
-	LastName VARCHAR(55) NOT NULL,
-	SlackHandle VARCHAR(55) NOT NULL,
-	CohortId INTEGER NOT NULL,
-	CONSTRAINT FK_Instructor_Cohort FOREIGN KEY(CohortId) REFERENCES Cohort(Id)
-);
+--CREATE TABLE Instructor (
+--	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
+--	FirstName VARCHAR(55) NOT NULL,
+--	LastName VARCHAR(55) NOT NULL,
+--	SlackHandle VARCHAR(55) NOT NULL,
+--	CohortId INTEGER NOT NULL,
+--	CONSTRAINT FK_Instructor_Cohort FOREIGN KEY(CohortId) REFERENCES Cohort(Id)
+--);
 
-CREATE TABLE Exercise (
-	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
-	ExerciseName VARCHAR(55) NOT NULL,
-	ExerciseLanguage VARCHAR(55) NOT NULL
-);
+--CREATE TABLE Exercise (
+--	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
+--	ExerciseName VARCHAR(55) NOT NULL,
+--	ExerciseLanguage VARCHAR(55) NOT NULL
+--);
 
-CREATE TABLE AssignedExercise (
-	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
-	ExerciseId INTEGER NOT NULL,
-	StudentId INTEGER NOT NULL,
-	CONSTRAINT FK_AssignedExercise_Exercise FOREIGN KEY(ExerciseId) REFERENCES Exercise(Id),
-	CONSTRAINT FK_AssignedExercise_Student FOREIGN KEY(StudentId) REFERENCES Student(Id)
-);
+--CREATE TABLE AssignedExercise (
+--	Id INTEGER NOT NULL PRIMARY KEY IDENTITY,
+--	ExerciseId INTEGER NOT NULL,
+--	StudentId INTEGER NOT NULL,
+--	CONSTRAINT FK_AssignedExercise_Exercise FOREIGN KEY(ExerciseId) REFERENCES Exercise(Id),
+--	CONSTRAINT FK_AssignedExercise_Student FOREIGN KEY(StudentId) REFERENCES Student(Id)
+--);
 
 -- Insert Data
-INSERT INTO Cohort (CohortName) VALUES ('Cohort 1');
-INSERT INTO Cohort (CohortName) VALUES ('Cohort 2');
-INSERT INTO Cohort (CohortName) VALUES ('Cohort 3');
+--INSERT INTO Cohort (CohortName) VALUES ('Cohort 1');
+--INSERT INTO Cohort (CohortName) VALUES ('Cohort 2');
+--INSERT INTO Cohort (CohortName) VALUES ('Cohort 3');
 
 INSERT INTO Exercise (ExerciseName, ExerciseLanguage) VALUES ('Planets', 'CSharp');
 INSERT INTO Exercise (ExerciseName, ExerciseLanguage) VALUES ('Random Numbers', 'JavaScript');
